@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}PantryPal - რეგისტრაცია{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-box">
+        <h2>რეგისტრაცია</h2>
+
+        <form method="POST" action="{{ url_for('auth.register') }}">
+            {{ form.hidden_tag() }}
+
+            <div class="form-group">
+                <label for="username">მომხმარებლის სახელი</label>
+                {{ form.username(class="form-control", placeholder="შეიყვანეთ სახელი") }}
+                {% if form.username.errors %}
+                    {% for error in form.username.errors %}
+                        <span class="error">{{ error }}</span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="email">ელ-ფოსტა</label>
+                {{ form.email(class="form-control", placeholder="შეიყვანეთ ელ-ფოსტა") }}
+                {% if form.email.errors %}
+                    {% for error in form.email.errors %}
+                        <span class="error">{{ error }}</span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="password">პაროლი</label>
+                {{ form.password(class="form-control", placeholder="შეიყვანეთ პაროლი") }}
+                {% if form.password.errors %}
+                    {% for error in form.password.errors %}
+                        <span class="error">{{ error }}</span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="confirm_password">პაროლის დადასტურება</label>
+                {{ form.confirm_password(class="form-control", placeholder="გაიმეორეთ პაროლი") }}
+                {% if form.confirm_password.errors %}
+                    {% for error in form.confirm_password.errors %}
+                        <span class="error">{{ error }}</span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="form-group checkbox-group">
+                {{ form.agree() }}
+                <label for="agree">
+                    ვეთანხმები <a href="{{ url_for('main.privacy_policy') }}" target="_blank">კონფიდენციალურობის პოლიტიკას</a>
+                </label>
+                {% if form.agree.errors %}
+                    {% for error in form.agree.errors %}
+                        <span class="error">{{ error }}</span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <button type="submit" class="btn btn-primary">რეგისტრაცია</button>
+        </form>
+
+        <p class="auth-switch">უკვე გაქვთ ანგარიში? <a href="{{ url_for('auth.login') }}">შესვლა</a></p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}PantryPal - უსაფრთხოება{% endblock %}
+
+{% block content %}
+<div class="policy-container">
+    <div class="policy-box">
+        <h1>უსაფრთხოება</h1>
+        <p class="last-updated">ბოლო განახლება: 2026 წელი</p>
+
+        <section>
+            <h3>1. პაროლის დაცვა</h3>
+            <p>თქვენი პაროლი ინახება bcrypt ალგორითმით დაშიფრული სახით.
+            ჩვენ არასდროს ვხედავთ თქვენს პაროლს plain text-ად.</p>
+            <ul>
+                <li>გამოიყენეთ მინიმუმ 8 სიმბოლო</li>
+                <li>შეიტანეთ დიდი და პატარა ასოები, ციფრები</li>
+                <li>ნუ გამოიყენებთ ერთ პაროლს სხვადასხვა საიტზე</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>2. CSRF დაცვა</h3>
+            <p>ყველა ფორმა დაცულია CSRF (Cross-Site Request Forgery) შეტევებისგან
+            Flask-WTF-ის hidden token-ის საშუალებით.</p>
+        </section>
+
+        <section>
+            <h3>3. სესიების მართვა</h3>
+            <p>სისტემაში შესვლის სესიები მართულია Flask-Login-ით.
+            "დამიმახსოვრე" ფუნქცია 30 დღის განმავლობაში ინარჩუნებს სესიას.
+            გასვლისას სესია სრულად იწმინდება.</p>
+        </section>
+
+        <section>
+            <h3>4. API Key-ების დაცვა</h3>
+            <p>Grok API key და სხვა სენსიტიური გასაღებები ინახება
+            სერვერზე environment variable-ებში და არასდროს არ ჩანს კლიენტის მხარეს.</p>
+        </section>
+
+        <section>
+            <h3>5. SQL Injection დაცვა</h3>
+            <p>მონაცემთა ბაზასთან ყველა ურთიერთობა ხდება SQLAlchemy ORM-ის
+            საშუალებით, რაც SQL Injection შეტევებს გამორიცხავს.</p>
+        </section>
+
+        <section>
+            <h3>6. Rate Limiting</h3>
+            <p>Grok API-ზე მოთხოვნები იზღუდება caching-ის საშუალებით,
+            რათა თავიდან ავიცილოთ ბოროტად გამოყენება და ზედმეტი ხარჯები.</p>
+        </section>
+
+        <section>
+            <h3>7. პრობლემის შეტყობინება</h3>
+            <p>თუ უსაფრთხოების პრობლემა აღმოაჩინეთ, გთხოვთ დაუყოვნებლივ
+            დაგვიკავშირდეთ: <a href="mailto:security@pantrypal.ge">security@pantrypal.ge</a></p>
+        </section>
+
+        <div class="policy-back">
+            <a href="{{ url_for('main.index') }}" class="btn btn-secondary">მთავარ გვერდზე დაბრუნება</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
