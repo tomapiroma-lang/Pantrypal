@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}PantryPal - შესვლა{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-box">
+        <h2>შესვლა</h2>
+
+        <form method="POST" action="{{ url_for('auth.login') }}">
+            {{ form.hidden_tag() }}
+
+            <div class="form-group">
+                <label for="email">ელ-ფოსტა</label>
+                {{ form.email(class="form-control", placeholder="შეიყვანეთ ელ-ფოსტა") }}
+                {% if form.email.errors %}
+                    {% for error in form.email.errors %}
+                        <span class="error">{{ error }}</span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="password">პაროლი</label>
+                {{ form.password(class="form-control", placeholder="შეიყვანეთ პაროლი") }}
+                {% if form.password.errors %}
+                    {% for error in form.password.errors %}
+                        <span class="error">{{ error }}</span>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="form-group checkbox-group">
+                {{ form.remember() }}
+                <label for="remember">დამიმახსოვრე</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary">შესვლა</button>
+        </form>
+
+        <p class="auth-switch">არ გაქვთ ანგარიში? <a href="{{ url_for('auth.register') }}">რეგისტრაცია</a></p>
+    </div>
+</div>
+{% endblock %}
