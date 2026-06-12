@@ -6,10 +6,10 @@
 <div class="landing-container">
     <header class="hero-section">
         <h1>მოგესალმებით PantryPal-ში</h1>
-        <p class="hero-subtitle">მართე შენი მაცივარი ჭკვიანურად, აღმოაჩინე ახალი რეცეპტები Grok AI-ს დახმარებით და შეამცირე საკვების ნარჩენები.</p>
+        <p class="hero-subtitle">მართე შენი მაცივარი ჭკვიანურად, აღმოაჩინე ახალი რეცეპტები Groq AI-ს დახმარებით და შეამცირე საკვების ნარჩენები.</p>
         <div class="hero-buttons">
-            <a href="{{ url_for('auth.register') }}" class="btn btn-primary">დაიწყე ახლავე</a>
-            <a href="{{ url_for('auth.login') }}" class="btn btn-secondary">შესვლა</a>
+            <a href="{{ url_for('register') }}" class="btn btn-primary">დაიწყე ახლავე</a>
+            <a href="{{ url_for('login') }}" class="btn btn-secondary">შესვლა</a>
         </div>
     </header>
 
@@ -26,7 +26,7 @@
 
             <div class="feature-card">
                 <div class="feature-icon">🤖</div>
-                <h3>Grok AI რეცეპტები</h3>
+                <h3>Groq AI რეცეპტები</h3>
                 <p>არ იცი რა მოამზადო? ჩვენი ხელოვნური ინტელექტი შემოგთავაზებს იდეალურ რეცეპტებს ზუსტად იმ ინგრედიენტებით, რაც უკვე გაქვს.</p>
             </div>
 
@@ -37,15 +37,5 @@
             </div>
         </div>
     </section>
-
-    <hr class="section-divider">
-
-    <footer class="landing-footer">
-        <p>&copy; 2026 PantryPal. ყველა უფლება დაცულია.</p>
-        <div class="footer-links">
-            <a href="{{ url_for('main.security') }}">უსაფრთხოება</a> | 
-            <a href="{{ url_for('main.privacy') }}">კონფიდენციალურობა</a>
-        </div>
-    </footer>
 </div>
 {% endblock %}

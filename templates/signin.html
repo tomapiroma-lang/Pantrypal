@@ -7,7 +7,7 @@
     <div class="auth-box">
         <h2>შესვლა</h2>
 
-        <form method="POST" action="{{ url_for('auth.login') }}">
+        <form method="POST" action="{{ url_for('login') }}">
             {{ form.hidden_tag() }}
 
             <div class="form-group">
@@ -24,7 +24,7 @@
                 <label for="password">პაროლი</label>
                 {{ form.password(class="form-control", placeholder="შეიყვანეთ პაროლი") }}
                 {% if form.password.errors %}
-                    {% for error in form.password.errors %}
+                    {% for error in form.password.errors %}\
                         <span class="error">{{ error }}</span>
                     {% endfor %}
                 {% endif %}
@@ -38,7 +38,11 @@
             <button type="submit" class="btn btn-primary">შესვლა</button>
         </form>
 
-        <p class="auth-switch">არ გაქვთ ანგარიში? <a href="{{ url_for('auth.register') }}">რეგისტრაცია</a></p>
+        <p class="auth-switch">არ გაქვთ ანგარიში? <a href="{{ url_for('register') }}">რეგისტრაცია</a></p>
+        
+        <div class="auth-footer-links">
+            <a href="{{ url_for('security') }}">🔒 უსაფრთხოება</a>
+        </div>
     </div>
 </div>
 {% endblock %}
