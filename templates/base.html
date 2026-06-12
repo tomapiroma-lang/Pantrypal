@@ -4,21 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}PantryPal{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     {% block extra_css %}{% endblock %}
 </head>
 <body>
 
     <nav class="navbar">
-        <a href="{{ url_for('main.index') }}" class="logo">🍽 PantryPal</a>
+        <a href="{{ url_for('index') }}" class="logo">
+            <div class="logo-icon">🍽</div>
+            <span class="logo-text">PantryPal</span>
+        </a>
+        
+        {% if current_user.is_authenticated %}
+        <form method="POST" action="{{ url_for('shop') }}" class="navbar-search-form">
+            <input type="text" 
+                   name="search_query" 
+                   class="navbar-search-input" 
+                   placeholder="რეცეპტი ან ინგრედიენტი..." 
+                   required>
+            <button type="submit" name="search_recipes_shop" class="navbar-search-btn">🔍</button>
+        </form>
+        {% endif %}
+        
         <div class="nav-links">
             {% if current_user.is_authenticated %}
-                <a href="{{ url_for('main.index') }}">მთავარი</a>
-                <a href="{{ url_for('main.favorites') }}">ფავორიტები</a>
-                <a href="{{ url_for('auth.logout') }}">გასვლა ({{ current_user.username }})</a>
+                <a href="{{ url_for('index') }}">მთავარი</a>
+                <a href="{{ url_for('ingredients') }}">ინგრედიენტები</a>
+                <a href="{{ url_for('shop') }}">მაღაზია</a>
+                <a href="{{ url_for('favorites') }}">ფავორიტები</a>
+                <a href="{{ url_for('logout') }}">გასვლა ({{ current_user.username }})</a>
             {% else %}
-                <a href="{{ url_for('auth.login') }}">შესვლა</a>
-                <a href="{{ url_for('auth.register') }}">რეგისტრაცია</a>
+                <a href="{{ url_for('login') }}">შესვლა</a>
+                <a href="{{ url_for('register') }}">რეგისტრაცია</a>
             {% endif %}
         </div>
     </nav>
@@ -40,10 +57,6 @@
     <footer class="footer">
         <div class="footer-inner">
             <span>&copy; 2025 PantryPal. ყველა უფლება დაცულია.</span>
-            <div class="footer-links">
-                <a href="{{ url_for('main.privacy_policy') }}">კონფიდენციალურობა</a>
-                <a href="{{ url_for('main.security') }}">უსაფრთხოება</a>
-            </div>
         </div>
     </footer>
 
