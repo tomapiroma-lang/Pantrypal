@@ -20,6 +20,7 @@ login_manager.login_view = 'login'
 def load_user(user_id):
     return User(user_id, "გიორგი", "user@pantrypal.ge")
 
+# ბლუპრინტის რეგისტრაცია ცარიელი ნეიმსფეისით
 app.register_blueprint(main_bp, name='')
 
 if __name__ == '__main__':
