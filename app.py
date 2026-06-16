@@ -1,8 +1,13 @@
-﻿from flask import Flask
+﻿import os
+
+from dotenv import load_dotenv
+from flask import Flask
 from flask_login import LoginManager
 
 from blueprints import main_bp, User
 from config import Config
+
+load_dotenv()
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
 app.config.from_object(Config)

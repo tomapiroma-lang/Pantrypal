@@ -47,7 +47,12 @@ def get_recipe_image(recipe_name):
 def index():
     if current_user.is_authenticated:
         return redirect(url_for('ingredients'))
-    return redirect(url_for('login'))
+    return redirect(url_for('landing'))
+
+
+@main_bp.route('/landing', endpoint='landing')
+def landing():
+    return render_template('landing.html')
 
 
 @main_bp.route('/security', endpoint='security')
