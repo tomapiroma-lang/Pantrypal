@@ -3,8 +3,6 @@
 from dotenv import load_dotenv
 from flask import Flask
 from flask_login import LoginManager
-from flask import Flask
-from flask_login import LoginManager # type: ignore
 
 from blueprints import main_bp, User
 from config import Config

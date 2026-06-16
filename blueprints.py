@@ -133,8 +133,9 @@ def shop():
                 მხოლოდ JSON, არა სხვა ტექსტი.
                 """
 
+                # აქ ჩაენაცვლა დინამიური GROQ_MODEL კონფიგურაციიდან
                 completion = client.chat.completions.create(
-                    model="llama3-8b-8192",
+                    model=current_app.config['GROQ_MODEL'],
                     messages=[{"role": "user", "content": prompt}],
                     temperature=0.7,
                     max_tokens=2000
@@ -180,8 +181,9 @@ def ingredients():
                 მოამზადე პასუხი ქართულ ენაზე, მეგობრული ტონით.
                 """
 
+                # აქაც ჩაენაცვლა დინამიური GROQ_MODEL კონფიგურაციიდან
                 completion = client.chat.completions.create(
-                    model="llama3-8b-8192",
+                    model=current_app.config['GROQ_MODEL'],
                     messages=[{"role": "user", "content": prompt}],
                     temperature=0.7,
                     max_tokens=1000
@@ -229,3 +231,7 @@ def remove_ingredient():
 def clear_ingredients():
     session.pop('pantry_list', None)
     return redirect(url_for('ingredients'))
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
