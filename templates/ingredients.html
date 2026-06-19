@@ -8,7 +8,7 @@
         <h2>რა გაქვს მაცივარში? 🥑</h2>
         <p class="subtitle">ჩაწერე ინგრედიენტი და დაამატე სიაში JavaScript-ის გარეშე.</p>
 
-        <form method="POST" action="{{ url_for('add_ingredient') }}" class="search-group">
+        <form method="POST" action="{{ url_for('main.add_ingredient') }}" class="search-group">
             <input type="text" name="ingredient_name" class="form-control" placeholder="მაგ: კვერცხი, ყველი, ტომატი..." autocomplete="off" required>
             <button type="submit" class="btn btn-primary">დამატება</button>
         </form>
@@ -18,7 +18,7 @@
                 {% for item in session['pantry_list'] %}
                     <div class="ingredient-tag">
                         <span>{{ item }}</span>
-                        <form method="POST" action="{{ url_for('remove_ingredient') }}" style="display: inline;">
+                        <form method="POST" action="{{ url_for('main.remove_ingredient') }}" style="display: inline;">
                             <input type="hidden" name="remove_item" value="{{ item }}">
                             <button type="submit" class="remove-tag-btn">&times;</button>
                         </form>
@@ -29,15 +29,15 @@
             {% endif %}
         </div>
 
-        <form method="POST" action="{{ url_for('ingredients') }}">
+        <form method="POST" action="{{ url_for('main.ingredients') }}">
             <button type="submit" name="search_recipes" class="btn btn-success btn-block" 
                     {% if not session.get('pantry_list') %} disabled {% endif %}>
-                🚀 მოძებნე რეცეპტები Groq AI-ით
+                🚀 მოძებნე რეცეპტები
             </button>
         </form>
 
         {% if session.get('pantry_list') %}
-            <form method="POST" action="{{ url_for('clear_ingredients') }}" style="margin-top: 10px; text-align: center;">
+            <form method="POST" action="{{ url_for('main.clear_ingredients') }}" style="margin-top: 10px; text-align: center;">
                 <button type="submit" style="background: none; border: none; color: var(--danger-color); cursor: pointer; font-size: 14px; font-weight: 600;">
                     🗑 სიის სრულად გასუფთავება
                 </button>

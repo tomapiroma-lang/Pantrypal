@@ -7,7 +7,7 @@
     <div class="auth-box">
         <h2>რეგისტრაცია</h2>
 
-        <form method="POST" action="{{ url_for('register') }}">
+        <form method="POST" action="{{ url_for('main.register') }}">
             {{ form.hidden_tag() }}
 
             <div class="form-group">
@@ -65,10 +65,10 @@
             <button type="submit" class="btn btn-primary">რეგისტრაცია</button>
         </form>
 
-        <p class="auth-switch">უკვე გაქვთ ანგარიში? <a href="{{ url_for('login') }}">შესვლა</a></p>
+        <p class="auth-switch">უკვე გაქვთ ანგარიში? <a href="{{ url_for('main.login') }}">შესვლა</a></p>
         
         <div class="auth-footer-links">
-            <a href="{{ url_for('security') }}">🔒 უსაფრთხოება</a>
+            <a href="{{ url_for('main.security') }}">🔒 უსაფრთხოება</a>
         </div>
     </div>
 </div>
